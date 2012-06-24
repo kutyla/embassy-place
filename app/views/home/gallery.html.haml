@@ -1,0 +1,19 @@
+%section
+  #gallery.shadow
+    - images = %w(bedroom foyer front livingroom sign walkway)
+    - images.each_with_index do |name, index|
+      .gallery-image{ id: "gallery-#{name}", class: "#{ (index == 0) ? 'active' : 'hidden' }" }
+        = image_tag "gallery/#{name}.png", { alt: "#{name} picture" }
+    -#
+      #gallery-video.gallery-image.hidden
+        <iframe width="640" height="480" src="http://www.youtube.com/embed/HefZRadnbvM" frameborder="0" allowfullscreen></iframe>
+
+    #thumbnails.shadow
+      - images.each do |name, index|
+        .thumbnail= image_tag "gallery/#{name}-thumbnail.png", { alt: "#{name} thumbnail" }
+      -#.thumbnail= image_tag "gallery/video-thumbnail.png", { alt: "video" }
+      .clear
+
+- content_for :scripts do
+  :javascript
+    Embassy.SlideShow.init();

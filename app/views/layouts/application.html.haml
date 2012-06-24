@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+%html{ :lang => 'en' }
+  %head
+    %title Embassy Place
+    %meta{ :charset => 'utf-8' }
+
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+    %script{ type: "text/javascript", src: "https://maps.googleapis.com/maps/api/js?sensor=false" }
+
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32459883-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  %body{ class: "#{controller_name} #{action_name}" }
+    %section#modal
+      %h1
+        = yield :modal_title
+        %span.small= link_to "(Close)", "#", { id: "link-close-modal" }
+      = yield :modal_content
+
+    - if current_user
+      %nav#user-header
+        .container
+          %span Admin Navigation for #{current_user.name}
+          %span= link_to "+Create Post", new_post_path
+          - if @post.present? && !@post.new_record
+            %span= link_to "Edit This Post", edit_post_path(@post)
+            %span= link_to "Delete This Post", post_url(@post, { protocol: "https://" }), { :method => :delete, :confirm => "Are you sure you want to delete #{@post.title}?" }
+          %span= link_to "Logout", logout_path
+
+
+    #header
+      .container
+        %nav
+          #banner.shadow
+            .content
+              = link_to "Gallery", gallery_path, { id: "nav-gallery", class: generate_link_class(gallery_path) }
+              = link_to "Features", features_path, { id: "nav-features", class: generate_link_class(features_path) }
+              = link_to "Blog", posts_path, { id: "nav-posts", class: generate_link_class(posts_path) }
+              = link_to "Contact", contact_path, { id: "nav-contact", class: ('last ' + generate_link_class(contact_path)) }
+              Highland, IN
+
+          - flash.each do |type, message|
+            .message{ class: type }= message
+
+          = link_to root_path, { id: "nav-homepage" } do
+            = image_tag("nav/logo.png", { alt: "Embassy Place Apartments", height: 44})
+
+    #frame
+      #canvas.container
+        #page
+          = yield
+
+    %footer.container
+      .content
+        %p
+          © Copyright #{Time.now.year}, All Rights Reserved, Embassy Place Apartments
+          %br
+          2219 Teakwood Cir #B, Highland, IN
+          %br
+          (219) 924-6500
+        %p
+          = link_to "Get the Brochure", asset_path('embassy_place.pdf'), { id: "brochure-pdf" }
+        %br
+        %br
+
+    :javascript
+      $("#link-close-modal").click(function(){
+        Embassy.Modal.close();
+        return false;
+      })
+
+    = yield :scripts

@@ -1,0 +1,15 @@
+<%
+  Mongoid.allow_dynamic_fields = false
+%>
+
+defaults: &defaults
+  uri: <%= ENV['MONGO_URI'] %>
+
+development:
+  <<: *defaults
+staging:
+  <<: *defaults
+production:
+  <<: *defaults
+test:
+  <<: *defaults

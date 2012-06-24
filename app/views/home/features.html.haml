@@ -1,0 +1,85 @@
+%section.padded.white
+  .group
+    %h1 Features
+    %p
+      Embassy Place is designed as the name implies for people who demand the highest caliber service and the very best features in a private world of comfort and convenience. The unparalleled combination of superior quality residences with the features and amenities of a luxury home and exceptional service are available now in northwestern Indiana’s premier rental community-Embassy Place.
+
+    .clear
+
+  .group
+    .right
+      = image_tag "features/floor-plan.png", { id: "link-floor-plan", alt: "Floor plans", class: "shadow pointer" }
+    %ul
+      %li Spacious 2 Bedroom Suites with Full Baths
+      %li Attached Garages
+      %li Utility Room w/Full-Size W/D Included
+      %li Cozy Fireplaces
+      %li Home Alarm System
+      %li Whirlpool Bathtubs/Vaulted Ceilings in some units
+      %li High Speed Internet Available & Cable Ready
+      %li Sheltered Patios or Balconies/Brick Exteriors
+      %li ContemporaryKitchens include ALL Major Appliances
+      %li Close to Shopping & Easy Access to Freeway
+      %li 24 hour Emergency Maintenance
+      %li Furnished Corporate Apartments Available
+
+  .clear
+  .group
+  .group
+    %h2 Amenities
+    .right
+      = link_to asset_path("embassy_place.pdf") do
+        =image_tag "features/brochure.png", { alt: "Brochure", class: "shadow" }
+    %ul#amenities
+      %li Accepts Electronic Payments
+      %li Air Conditioning
+      %li Alarm System
+      %li Apartment
+      %li Broadband Internet Access
+      %li Cable or Satellite
+      %li Carpet
+      %li Cats Allowed
+      %li Controlled Access
+      %li Corporate Housing
+      %li Courtyard
+      %li Disability Access
+      %li Dishwasher
+      %li Fireplace
+      %li Freeway Access
+      %li Furnished Available
+      %li Garages
+      %li Garbage Disposal
+      %li Internet Access
+      %li Laundry Facility
+      %li Market Rate
+      %li Microwave
+      %li Patio or Balcony
+      %li Pets Allowed
+      %li Public Transportation
+      %li Senior Housing
+      %li Short Term Lease
+      %li Small Dogs Allowed
+      %li Surface Lot
+      %li Tile Floors
+      %li Vaulted Ceiling
+      %li View
+      %li Walk In Closets
+      %li Washer Dryer In Unit
+      %li Water Sewer and Trash
+      %li Window Covering
+    .clear
+
+- content_for :modal_title, "Floorplans"
+- content_for :modal_content do
+  = image_tag "features/plan-a.png", { alt: "The Barrister", class: "shadow" }
+  %br
+  = image_tag "features/plan-b.png", { alt: "The Ambassador", class: "shadow" }
+
+- content_for :scripts do
+  :javascript
+    $(document).ready(function(){
+      $("#link-floor-plan").click(function(){
+        Embassy.Modal.open();
+        return false;
+      })
+    })

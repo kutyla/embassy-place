@@ -1,0 +1,21 @@
+!!! XML
+%urlset{ xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" }
+  - latest_deploy = ENV["LATEST_DEPLOY"] || "2012-06-10"
+  %url
+    %loc http://#{request.host}
+    %lastmod= Time.parse(latest_deploy).strftime("%Y-%m-%d")
+    %changefreq weekly
+    %priority 1.0
+  - pages = %w(gallery features posts contact)
+  - pages.each do |page|
+    %url
+      %loc http://#{request.host}/#{page}
+      %lastmod= Time.parse(latest_deploy).strftime("%Y-%m-%d")
+      %changefreq weekly
+      %priority 0.9
+  - @posts.each do |post|
+    %url
+      %loc http://#{request.host}/posts/#{post.permalink}
+      %lastmod= post.updated_at.strftime("%Y-%m-%d")
+      %changefreq weekly
+      %priority 0.8

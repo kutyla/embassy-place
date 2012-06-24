@@ -1,0 +1,78 @@
+body
+  background: #000 url(image-path("background.png")) repeat scroll 0px 0px
+  font-family: 'Sorts Mill Goudy', serif
+  line-height: 1.6em
+  font-size: 90%
+  .container
+    width: 900px
+    margin: auto
+  #frame
+    background: transparent url(image-path("background-content.png")) repeat scroll 0px 0px
+    padding:
+      top: 1px
+      bottom: 60px
+    margin:
+      bottom: 20px
+      top: 80px
+    border:
+      top: 2px groove #1B331A
+      bottom: 2px groove #1B331A
+    #canvas
+      #page
+        margin:
+          left: 200px
+          top: -40px
+          bottom: 20px
+        position: relative
+        .padded
+          padding: 40px
+          width: 620px
+        .group
+          padding-bottom: 3em
+  footer
+    .content
+      color: #666
+      margin:
+        left: 200px
+    a
+      color: #999
+
+.shadow
+  box-shadow: 0px 0px 14px #000
+
+.white
+  background: transparent url(image-path("background-white.png")) repeat scroll 0px 0px
+
+body
+  &.home.index
+    #opening-description
+      position: absolute
+      left: -60px
+      bottom: -50px
+      width: 400px
+      padding: 2em 1em 1em 1em
+      text-align: center
+
+  &.home.gallery
+    #gallery
+      position: relative
+      display: inline-block
+      text-align: center
+      height: 480px
+      width: 640px
+      .gallery-image
+        position: absolute
+
+      #thumbnails
+        position: absolute
+        bottom: -50px
+        left: 20px
+        right: 20px
+        height: 75px
+        .thumbnail
+          float: left
+  &.home.contact
+    #map
+      float: right
+      width: 300px
+      height: 200px

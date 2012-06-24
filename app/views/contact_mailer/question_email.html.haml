@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+%html{ :lang => 'en' }
+  %head
+    %title Email from Site
+    %meta{ :charset => 'utf-8' }
+
+  %body
+    %h1 Email from Site
+    %p
+      From: #{@name}
+      %br
+      Email: #{@email}
+      %br
+      Phone: #{@phone}
+
+    %p
+      Message:
+      %br
+      = @message

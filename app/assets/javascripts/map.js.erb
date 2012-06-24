@@ -1,0 +1,27 @@
+Embassy.Map = {
+
+  init: function(){
+    this.map_options = {
+      center: new google.maps.LatLng(41.5316, -87.4760),
+      zoom: 13,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    this.createMap();
+    this.addMarker();
+  },
+
+  createMap: function(){
+    this.map = new google.maps.Map(document.getElementById("map"), this.map_options);
+  },
+
+  addMarker: function(){
+    this.marker_image = '<%= asset_path("map/marker.png") %>';
+    this.marker = new google.maps.Marker({
+        position: this.map_options["center"],
+        map: this.map,
+        icon: this.marker_image
+    });
+  }
+
+}

@@ -1,0 +1,17 @@
+%section.padded.white
+  %h1
+    = image_tag "posts/pencil.png", { alt: 'Pencil' }
+    = @post.title
+  %p
+    Written on #{localize(@post.created_at, format: :post)}
+
+  = markdown(@post.content)
+
+  %p
+    - unless @next.blank?
+      = link_to "Next: #{@next.title.truncate(30)}", post_path(@next)
+      %br
+    - unless @previous.blank?
+      = link_to "Previous: #{@previous.title.truncate(30)}", post_path(@previous)
+      %br
+    = link_to "Back to all Posts", posts_path

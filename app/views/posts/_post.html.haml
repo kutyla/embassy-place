@@ -1,0 +1,6 @@
+.post.group
+  %h2.title
+    = link_to post.title, post_path(post)
+  %p.content
+    = post.content.truncate(200)
+    = link_to 'Read More', post_path(post)

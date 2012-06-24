@@ -1,0 +1,23 @@
+en:
+  controllers:
+    sessions:
+      create:
+        error: "Sorry, we could not authenticate you. Please try again."
+        success: "Welcome back!"
+    posts:
+      create:
+        success: "Post was successfully created."
+        failure: "Please make sure there's a title and content."
+      update:
+        success: "Post was successfully updated."
+        failure: "Please make sure there's a title and content."
+      destroy:
+        success: "Post was successfully destroyed."
+
+    home:
+      create_contact:
+        error: "Sorry, please provide your name, valid email address and message."
+        success: "Thanks for the message! We'll get back to you as soon as possible."
+  time:
+    formats:
+      post: "%A %B, %d %Y"

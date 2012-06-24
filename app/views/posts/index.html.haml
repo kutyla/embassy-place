@@ -1,0 +1,13 @@
+%section.padded.white
+
+  %h1
+    = image_tag "posts/pencil.png", { alt: 'Pencil' }
+    Blog Posts
+
+  %br
+  - if @posts.blank?
+    %p Posts are coming soon!
+  - else
+    = render @posts
+
+  = paginate @posts

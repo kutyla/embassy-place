@@ -1,0 +1,39 @@
+%section.padded.white
+  #map.shadow
+  - content_for :scripts do
+    :javascript
+      $(document).ready(function(){
+        Embassy.Map.init();
+      })
+
+  .group
+    %h1 Contact Us
+    %p
+      2219 Teakwood Cir #B, Highland, IN
+      %br
+      (219) 924-6500
+    %p
+      Office Hours:
+      %br
+      Monday-Friday: 9:00 AM - 5:00 PM
+      %br
+      Saturday: 9:00 AM - 5:00 PM
+      %br
+      Sunday: 1:00 PM - 5:00 PM
+
+  .group
+    %h2 ...Or Send Us an Email
+    = form_for @note, { url: contact_path, html: { id: 'new_note' } } do |form|
+      .field
+        = form.label :name, "Your Name*"
+        = form.text_field :name
+      .field
+        = form.label :email, "Email*"
+        = form.text_field :email
+      .field
+        = form.label :phone, "Phone"
+        = form.text_field :phone
+      .field
+        = form.label :message, "Message*"
+        = form.text_area :message
+      = submit_tag "Send"
