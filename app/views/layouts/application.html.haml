@@ -48,8 +48,7 @@
               = link_to "Features", features_path, { id: "nav-features", class: generate_link_class(features_path) }
               = link_to "Blog", posts_path, { id: "nav-posts", class: generate_link_class(posts_path) }
               = link_to "Contact", contact_path, { id: "nav-contact", class: ('last ' + generate_link_class(contact_path)) }
-              Highland, IN
-
+             
           - flash.each do |type, message|
             .message{ class: type }= message
 
